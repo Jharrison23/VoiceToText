@@ -8,6 +8,8 @@ import java.util.Date;
 
 public class Note
 {
+    private String NoteID;
+
     // String to store the title of the note
     private String NoteTitle;
 
@@ -15,10 +17,16 @@ public class Note
     private String NoteDate;
 
     // constructor to set the title and date of the note
-    public Note(String noteTitle, String noteDate)
+    public Note(String noteID, String noteTitle, String noteDate)
     {
+        NoteID = noteID;
         NoteTitle = noteTitle;
         NoteDate = noteDate;
+    }
+
+    public String getNoteID()
+    {
+        return NoteID;
     }
 
     // get the title of the note

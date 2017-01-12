@@ -70,7 +70,7 @@ public class HomePage extends AppCompatActivity
         {
             while (data.moveToNext())
             {
-                note = new Note(data.getString(1), data.getString(2));
+                note = new Note(data.getString(0), data.getString(1), data.getString(2));
 
                 notesArrayList.add(note);
             }
