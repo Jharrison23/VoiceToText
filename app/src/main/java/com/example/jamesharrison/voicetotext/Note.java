@@ -12,10 +12,10 @@ public class Note
     private String NoteTitle;
 
     // Date to store the date the note was created
-    private Date NoteDate;
+    private String NoteDate;
 
     // constructor to set the title and date of the note
-    public Note(String noteTitle, Date noteDate)
+    public Note(String noteTitle, String noteDate)
     {
         NoteTitle = noteTitle;
         NoteDate = noteDate;
@@ -28,7 +28,7 @@ public class Note
     }
 
     // Get the date of the note
-    public Date getNoteDate()
+    public String getNoteDate()
     {
         return NoteDate;
     }
