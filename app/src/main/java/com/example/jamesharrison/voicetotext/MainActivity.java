@@ -1,5 +1,6 @@
 package com.example.jamesharrison.voicetotext;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,7 +47,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             // if the enterApp button is pressed
             case R.id.enterApp:
+
                 Toast.makeText(this, "Enter Button Pressed", Toast.LENGTH_SHORT).show();
+
+                // Create an intent to change views to the View HomePage
+                Intent intent = new Intent(MainActivity.this, HomePage.class);
+
+                // Go to the View Homepage
+                startActivity(intent);
+
                 break;
         }
 
