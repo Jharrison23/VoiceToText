@@ -51,7 +51,7 @@ public class ListAdapterView extends ArrayAdapter<Note>
 
             if(noteDate != null)
             {
-                noteDate.setText(noteDate.getText());
+                noteDate.setText(note.getNoteDate());
             }
 
         }
