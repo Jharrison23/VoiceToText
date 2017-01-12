@@ -8,20 +8,26 @@ import java.util.Date;
 
 public class Note
 {
+    // String to store the title of the note
     private String NoteTitle;
+
+    // Date to store the date the note was created
     private Date NoteDate;
 
+    // constructor to set the title and date of the note
     public Note(String noteTitle, Date noteDate)
     {
         NoteTitle = noteTitle;
         NoteDate = noteDate;
     }
 
+    // get the title of the note
     public String getNoteTitle()
     {
         return NoteTitle;
     }
 
+    // Get the date of the note
     public Date getNoteDate()
     {
         return NoteDate;
