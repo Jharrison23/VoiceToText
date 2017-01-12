@@ -27,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         String createTable = "CREATE TABLE " + TABLE_NAME + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " NOTETITLE TEXT, NOTEDATE  TEXT default CURRENT_TIMESTAMP) ";
+                " NOTETITLE TEXT, NOTEDATE TEXT) ";//  TEXT default CURRENT_TIMESTAMP) ";
 
         db.execSQL(createTable);
     }
@@ -50,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         ContentValues values = new ContentValues();
 
         values.put(COL2,noteTitle);
-        values.put(COL3, " TEXT default CURRENT_TIMESTAMP");
+        values.put(COL3, " TEXT");// default CURRENT_TIMESTAMP");
 
         long result = db.insert(TABLE_NAME, null, values);
 
@@ -70,7 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor data = db.rawQuery("SELECT * FROM" + TABLE_NAME, null);
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
         return data;
     }
