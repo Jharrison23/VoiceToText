@@ -38,13 +38,17 @@ public class NewNote extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                boolean insert = db.addData(noteTitle.getText().toString(), noteDate.getText().toString());
-
-                if (insert)
+                if (!noteTitle.getText().toString().equals("")  && !noteDate.getText().toString().equals(""))
                 {
-                    Toast.makeText(NewNote.this, "Note has been inserted", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(NewNote.this, HomePage.class);
-                    startActivity(intent);
+                    boolean insert = db.addData(noteTitle.getText().toString(), noteDate.getText().toString());
+
+                    if (insert)
+                    {
+                        Toast.makeText(NewNote.this, "Note has been inserted", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(NewNote.this, HomePage.class);
+                        startActivity(intent);
+                    }
+
                 }
 
                 else
