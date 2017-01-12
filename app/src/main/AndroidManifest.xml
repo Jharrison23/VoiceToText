@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomePage" />
-        <activity android:name=".ListAdapterView"></activity>
+        <activity android:name=".ListAdapterView" />
+        <activity android:name=".NewNote"></activity>
     </application>
 
 </manifest>

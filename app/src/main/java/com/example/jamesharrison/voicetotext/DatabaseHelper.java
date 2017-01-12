@@ -43,14 +43,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
 
 
-    public boolean addData(String noteTitle)
+    public boolean addData(String noteTitle, String noteDate)
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
         values.put(COL2,noteTitle);
-        values.put(COL3, " TEXT");// default CURRENT_TIMESTAMP");
+        values.put(COL3, noteDate);//" TEXT default CURRENT_TIMESTAMP");
 
         long result = db.insert(TABLE_NAME, null, values);
 

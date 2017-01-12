@@ -1,9 +1,11 @@
 package com.example.jamesharrison.voicetotext;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -41,7 +43,13 @@ public class HomePage extends AppCompatActivity
     {
         // Initialize the floating action button and link it to the addNewNote Button
         addNewNote = (FloatingActionButton) findViewById(R.id.addNewNote);
-
+        addNewNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, NewNote.class);
+                startActivity(intent);
+            }
+        });
         // Initialize the list view and link it to the notesList List View
         notesList = (ListView) findViewById(R.id.notesList);
 
