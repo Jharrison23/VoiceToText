@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity
 {
 
+    DatabaseHelper myDB;
+
     // Declared UI elements to be used on this view
     FloatingActionButton addNewNote;
 
