@@ -15,7 +15,7 @@ public class HomePage extends AppCompatActivity
 
     ListView notesList;
 
-    // Create an arraylist which will store the notes in the database
+    // Create an Array List which will store the notes in the database
     ArrayList<Note> notesArrayList;
 
     // Variable of type Note, to add to the notesArrayList
@@ -36,7 +36,7 @@ public class HomePage extends AppCompatActivity
         // Initialize the floating action button and link it to the addNewNote Button
         addNewNote = (FloatingActionButton) findViewById(R.id.addNewNote);
 
-        // Initialize the list view and link it to the notesList listview
+        // Initialize the list view and link it to the notesList List View
         notesList = (ListView) findViewById(R.id.notesList);
     }
 }
