@@ -13,6 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+
+// Class which will display the notes currently in the database which were entered by the user
 public class HomePage extends AppCompatActivity implements View.OnClickListener
 {
 
@@ -51,11 +53,13 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
         // Initialize the list view and link it to the notesList List View
         notesList = (ListView) findViewById(R.id.notesList);
 
-
+        // instance of database helper
         myDB = new DatabaseHelper(this);
 
+        // create arraylist of type note
         notesArrayList = new ArrayList<Note>();
 
+        // create a cursor to return a reference to the database method getListContents
         Cursor data = myDB.getListContents();
 
         // get the number of rows in the database
