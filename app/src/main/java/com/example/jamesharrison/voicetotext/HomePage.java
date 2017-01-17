@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -87,6 +88,44 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
 
             // set the adapter for the list view to the custom ListAdapterView
             notesList.setAdapter(adapter);
+
+
+            notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Note note = notesArrayList.get(position);
+
+                    //Toast.makeText(HomePage.this, note.getNoteTitle(), Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(HomePage.this, NoteView.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("NoteName", note.getNoteTitle());
+
+                    bundle.putString("NoteDate", note.getNoteDate());
+
+                    intent.putExtras(bundle);
+
+//                    NoteView noteView = new NoteView();
+//
+//                    String name = note.getNoteTitle();
+//                    String date = note.getNoteDate();
+//
+//
+//                    Toast.makeText(HomePage.this, name, Toast.LENGTH_SHORT).show();
+//                    noteView.setNoteName(name);
+//                    noteView.setNoteDate(date);
+
+                    startActivity(intent);
+                }
+            });
+
+
+
+
+
         }
     }
 
