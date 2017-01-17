@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".HomePage" />
         <activity android:name=".ListAdapterView" />
-        <activity android:name=".NewNote"></activity>
+        <activity android:name=".NewNote" />
+        <activity android:name=".NoteView"></activity>
     </application>
 
 </manifest>
