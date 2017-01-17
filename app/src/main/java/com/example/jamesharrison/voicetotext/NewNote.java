@@ -12,7 +12,7 @@ public class NewNote extends AppCompatActivity
 {
     Button save;
 
-    EditText noteTitle, noteDate, noteText;
+    EditText noteTitle, noteDate, noteContent;
     DatabaseHelper db;
 
     @Override
@@ -31,6 +31,7 @@ public class NewNote extends AppCompatActivity
 
         noteTitle = (EditText) findViewById(R.id.noteTitleEdit);
         noteDate = (EditText) findViewById(R.id.noteDateEdit);
+        noteContent = (EditText) findViewById(R.id.noteEditText);
 
         save = (Button) findViewById(R.id.saveButton);
         save.setOnClickListener(new View.OnClickListener()
@@ -40,7 +41,7 @@ public class NewNote extends AppCompatActivity
             {
                 if (!noteTitle.getText().toString().equals("")  && !noteDate.getText().toString().equals(""))
                 {
-                    boolean insert = db.addData(noteTitle.getText().toString(), noteDate.getText().toString());
+                    boolean insert = db.addData(noteTitle.getText().toString(), noteDate.getText().toString(), noteContent.getText().toString());
 
                     if (insert)
                     {

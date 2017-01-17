@@ -14,7 +14,8 @@ import android.widget.Toast;
 public class NoteView extends AppCompatActivity
 {
 
-    String NoteName, NoteDate, NoteContent;
+    String StringName, StringDate, StringContent;
+
     TextView noteName, noteDate, noteContent;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,17 +28,14 @@ public class NoteView extends AppCompatActivity
 
         if(!extrasBundle.isEmpty())
         {
-            String NoteName = extrasBundle.getString("NoteName");
-            String NoteDate = extrasBundle.getString("NoteDate");
-
-            Toast.makeText(this, "note name = " + NoteName, Toast.LENGTH_SHORT).show();
-
-            setNoteName(NoteName);
-            setNoteDate(NoteDate);
+            String StringName = extrasBundle.getString("NoteName");
+            String StringDate = extrasBundle.getString("NoteDate");
+            String StringContent = extrasBundle.getString("NoteContent");
 
 
-//            noteName.setText(NoteName);
-//            noteDate.setText(NoteDate);
+            setNoteName(StringName);
+            setNoteDate(StringDate);
+            setNoteContent(StringContent);
 
         }
 
@@ -45,44 +43,14 @@ public class NoteView extends AppCompatActivity
         init();
     }
 
-//    @Override
-//    public void startActivity(Intent intent) {
-//        super.startActivity(intent);
-//
-//
-//        Bundle extrasBundle = intent.getExtras();
-//
-//        if(!extrasBundle.isEmpty())
-//        {
-//            String NoteName = extrasBundle.getString("NoteName");
-//            String NoteDate = extrasBundle.getString("NoteDate");
-//
-//
-//            noteName.setText(NoteName);
-//            noteDate.setText(NoteDate);
-//
-//        }
-//
-//        Toast.makeText(this, "startintent", Toast.LENGTH_SHORT).show();
-//
-//        noteName.setText(getNoteName());
-//        noteDate.setText(getNoteDate());
-//
-//
-//
-//    }
 
     public void init()
     {
-
-        Toast.makeText(this, "init", Toast.LENGTH_SHORT).show();
-
-
         String name = getNoteName();
 
         String date = getNoteDate();
 
-        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+        String content = getNoteContent();
 
         noteName = (TextView) findViewById(R.id.noteName);
 
@@ -90,7 +58,9 @@ public class NoteView extends AppCompatActivity
 
         noteDate = (TextView) findViewById(R.id.noteDate);
         noteDate.setText(date);
+
         noteContent = (TextView) findViewById(R.id.noteContent);
+        noteContent.setText(content);
 
     }
 
@@ -106,32 +76,29 @@ public class NoteView extends AppCompatActivity
 
 
     public void setNoteContent(String noteContent) {
-        NoteContent = noteContent;
+        StringContent = noteContent;
     }
 
     public void setNoteName(String noteName) {
-        this.NoteName = noteName;
-       // Toast.makeText(this, "in here", Toast.LENGTH_SHORT).show();
+        this.StringName = noteName;
     }
 
     public void setNoteDate(String noteDate)
     {
-        this.NoteDate = noteDate;
-
-        //Toast.makeText(this, "in here too", Toast.LENGTH_SHORT).show();
+        this.StringDate = noteDate;
     }
 
     public String getNoteContent()
     {
-        return NoteContent;
+        return StringContent;
     }
 
     public String getNoteDate() {
-        return NoteDate;
+        return StringDate;
     }
 
     public String getNoteName() {
-        return NoteName;
+        return StringName;
     }
 }
 

@@ -17,6 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public static final String COL1 = "ID";
     public static final String COL2 = "NOTETITLE";
     public static final String COL3 = "NOTEDATE";
+    public static final String COL4 = "NOTECONTENT";
 
     public DatabaseHelper(Context context)
     {
@@ -27,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         String createTable = "CREATE TABLE " + TABLE_NAME + " ( ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " NOTETITLE TEXT, NOTEDATE TEXT) ";//  TEXT default CURRENT_TIMESTAMP) ";
+                " NOTETITLE TEXT, NOTEDATE TEXT," + " NOTECONTENT TEXT) ";//  TEXT default CURRENT_TIMESTAMP) ";
 
         db.execSQL(createTable);
     }
@@ -43,14 +44,15 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
 
 
-    public boolean addData(String noteTitle, String noteDate)
+    public boolean addData(String noteTitle, String noteDate, String noteContent)
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
         values.put(COL2,noteTitle);
-        values.put(COL3, noteDate);//" TEXT default CURRENT_TIMESTAMP");
+        values.put(COL3, noteDate);
+        values.put(COL4, noteContent);//" TEXT default CURRENT_TIMESTAMP");
 
         long result = db.insert(TABLE_NAME, null, values);
 

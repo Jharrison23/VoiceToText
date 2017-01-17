@@ -50,6 +50,17 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
     {
         // Initialize the floating action button and link it to the addNewNote Button
         addNewNote = (FloatingActionButton) findViewById(R.id.addNewNote);
+        addNewNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(HomePage.this, "Click", Toast.LENGTH_SHORT).show();
+                // Go to the New note activity
+                Intent intent = new Intent(HomePage.this, NewNote.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Initialize the list view and link it to the notesList List View
         notesList = (ListView) findViewById(R.id.notesList);
@@ -79,7 +90,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
             while (data.moveToNext())
             {
                 // add each entry of the database into the array list notesArray list
-                note = new Note(data.getString(0), data.getString(1), data.getString(2));
+                note = new Note(data.getString(0), data.getString(1), data.getString(2), data.getString(3));
                 notesArrayList.add(note);
             }
 
@@ -96,8 +107,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
 
                     Note note = notesArrayList.get(position);
 
-                    //Toast.makeText(HomePage.this, note.getNoteTitle(), Toast.LENGTH_SHORT).show();
-
                     Intent intent = new Intent(HomePage.this, NoteView.class);
 
                     Bundle bundle = new Bundle();
@@ -106,17 +115,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
 
                     bundle.putString("NoteDate", note.getNoteDate());
 
-                    intent.putExtras(bundle);
+                    bundle.putString("NoteContent", note.getNoteContent());
 
-//                    NoteView noteView = new NoteView();
-//
-//                    String name = note.getNoteTitle();
-//                    String date = note.getNoteDate();
-//
-//
-//                    Toast.makeText(HomePage.this, name, Toast.LENGTH_SHORT).show();
-//                    noteView.setNoteName(name);
-//                    noteView.setNoteDate(date);
+                    intent.putExtras(bundle);
 
                     startActivity(intent);
                 }
@@ -138,6 +139,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
             // If the add new button is clicked
             case R.id.addNewNote:
 
+                Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show();
                 // Go to the New note activity
                 Intent intent = new Intent(HomePage.this, NewNote.class);
                 startActivity(intent);
