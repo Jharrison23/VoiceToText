@@ -38,15 +38,15 @@
         android:layout_alignStart="@+id/noteName"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/noteName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="16dp"
-        android:hint="Enter Note Content" />
+        android:hint="Enter Note Content"
+        app:layout_constraintBottom_toTopOf="@+id/deleteNote"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:layout_width="125dp"
@@ -58,4 +58,18 @@
         app:layout_constraintLeft_toRightOf="@+id/noteName"
         android:hint="Note Date"
         android:textAlignment="center" />
+
+    <Button
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deleteNote"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp" />
 </android.support.constraint.ConstraintLayout>

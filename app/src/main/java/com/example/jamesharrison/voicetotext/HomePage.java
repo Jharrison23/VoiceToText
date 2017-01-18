@@ -111,6 +111,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
 
                     Bundle bundle = new Bundle();
 
+                    bundle.putString("ID", note.getNoteID());
+
                     bundle.putString("NoteName", note.getNoteTitle());
 
                     bundle.putString("NoteDate", note.getNoteDate());
