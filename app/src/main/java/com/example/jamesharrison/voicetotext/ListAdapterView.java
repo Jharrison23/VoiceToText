@@ -41,15 +41,15 @@ public class ListAdapterView extends ArrayAdapter<Note>
 
         if(note != null)
         {
-            TextView noteID = (TextView) convertView.findViewById(R.id.noteID);
+            //TextView noteID = (TextView) convertView.findViewById(R.id.noteID);
             TextView noteTitle = (TextView) convertView.findViewById(R.id.noteTitle);
             TextView noteDate = (TextView) convertView.findViewById(R.id.noteDate);
 
 
-            if(noteID != null)
-            {
-                noteID.setText(note.getNoteID());
-            }
+//            if(noteID != null)
+//            {
+//                noteID.setText(note.getNoteID());
+//            }
 
             if (noteTitle != null)
             {

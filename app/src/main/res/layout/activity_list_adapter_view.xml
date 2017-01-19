@@ -10,25 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textStyle="bold"
-        android:layout_weight="33"
+        android:layout_weight="50"
         android:textSize="20dp"
-        android:id="@+id/noteID"/>
+        android:id="@+id/noteTitle"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textStyle="bold"
-        android:layout_weight="33"
+        android:layout_weight="50"
         android:textSize="20dp"
-        android:id="@+id/noteTitle"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textStyle="bold"
-        android:layout_weight="33"
-        android:textSize="20dp"
-        android:id="@+id/noteDate"/>
+        android:id="@+id/noteDate"
+        android:textAlignment="center" />
 
 
 </LinearLayout>

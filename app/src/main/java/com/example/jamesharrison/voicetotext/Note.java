@@ -8,6 +8,8 @@ import java.util.Date;
 
 public class Note
 {
+
+    // String to store the id of the note
     private String NoteID;
 
     // String to store the title of the note
@@ -27,6 +29,7 @@ public class Note
         NoteContent = noteContent;
     }
 
+    // get the id of the note
     public String getNoteID()
     {
         return NoteID;
@@ -44,6 +47,7 @@ public class Note
         return NoteDate;
     }
 
+    // Get the content of the note
     public String getNoteContent() {
         return NoteContent;
     }
