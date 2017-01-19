@@ -18,29 +18,46 @@ import static com.example.jamesharrison.voicetotext.DatabaseHelper.TABLE_NAME;
 // Class which will display the contents of the notes in the database
 public class NoteView extends AppCompatActivity
 {
+    // Variable for instance of database helper
     DatabaseHelper db;
 
+    // Strings to store note information
     String StringName, StringDate, StringContent, NoteID;
 
+    // Button to be linked to the delete button on the view
     Button deleteButton;
 
+    // Edit Text view which will display the data
     TextView noteName, noteDate, noteContent;
+
+    // When the view is created
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        
+
+        // Set the layout to be activity_note_view
         setContentView(R.layout.activity_note_view);
 
+        // Create a bundle and get the bundle passed into the intent which moved to this class
         Bundle extrasBundle = getIntent().getExtras();
 
+        // if the bundle is not empty
         if(!extrasBundle.isEmpty())
         {
+            // Save the string with the tag "Id" into id
             String id = extrasBundle.getString("ID");
+
+            // Retrieve the Note name from the bundle
             String StringName = extrasBundle.getString("NoteName");
+
+            // Retrieve the note date from the bundle
             String StringDate = extrasBundle.getString("NoteDate");
+
+            // Retrieve the note content from the bundle
             String StringContent = extrasBundle.getString("NoteContent");
 
+            // set the note id, name, date and content
             setNoteID(id);
             setNoteName(StringName);
             setNoteDate(StringDate);
@@ -48,49 +65,71 @@ public class NoteView extends AppCompatActivity
 
         }
 
-
+        // Call the method to initialze the ui elements
         init();
     }
 
 
+    // Method to initialize UI elements
     public void init()
     {
+        // Create instance of database helper
         db = new DatabaseHelper(this);
+
+        // get the note name and store inside variable note
         String name = getNoteName();
 
+        // Store the note date
         String date = getNoteDate();
 
+        // Store the note content
         String content = getNoteContent();
 
+        // Text view to display note name
         noteName = (TextView) findViewById(R.id.noteName);
 
+        // set the text of the note name text view to the contents of variable name
         noteName.setText(name);
 
+        // Text view to display note date
         noteDate = (TextView) findViewById(R.id.noteDate);
+
+        // set the text of the note date text view to the contents of variable date
         noteDate.setText(date);
 
+        // Text view to display note content
         noteContent = (TextView) findViewById(R.id.noteContent);
+
+        // set the text of the note content text view to the contents of variable content
         noteContent.setText(content);
 
+        // Link the delete button
         deleteButton = (Button) findViewById(R.id.deleteNote);
 
+        // When the delete button is pressed
         deleteButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Integer deletedRows = db.deleteData(NoteID);
 
+                // Call the database method deleteData and pass in an ID
+                Integer deletedRows = db.deleteData(getNoteID());
+
+                // If the result of the deleteData is greater than 0 the delete was successful
                 if (deletedRows > 0)
                 {
                     Toast.makeText(NoteView.this, "Note deleted", Toast.LENGTH_SHORT).show();
 
+                    // Create an intent to move to the class Homepage
                     Intent intent = new Intent(NoteView.this, HomePage.class);
 
+                    // Move to class homepage
                     startActivity(intent);
 
                 }
 
+                // The delete was not successful
                 else
                 {
                     Toast.makeText(NoteView.this, "Note not deleted", Toast.LENGTH_SHORT).show();
@@ -102,15 +141,7 @@ public class NoteView extends AppCompatActivity
     }
 
 
-    public void showNoteContents(String NoteName, String NoteDate, String NoteContent)
-    {
-        noteName.setText(NoteName);
-
-        noteDate.setText(NoteDate);
-
-        noteContent.setText(NoteContent);
-    }
-
+   // Getters and setters for the note information
     public void setNoteID(String noteID)
     {
         NoteID = noteID;
@@ -147,15 +178,6 @@ public class NoteView extends AppCompatActivity
         return StringName;
     }
 
-    public void delete(String id)
-    {
-        DatabaseHelper handler = new DatabaseHelper(this);
-
-        SQLiteDatabase db = handler.getWritableDatabase();
-
-        db.execSQL("DELETE FROM " + TABLE_NAME + "WHERE ");
-
-    }
 }
 
 
