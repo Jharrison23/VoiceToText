@@ -15,10 +15,13 @@ import java.util.ArrayList;
 public class ListAdapterView extends ArrayAdapter<Note>
 {
 
+
     private LayoutInflater inflater;
 
+    // Array list of type Note which store all of the notes in the database
     private ArrayList<Note> notes;
 
+    // Integer to store the id of the layout to be inflated
     private int mViewResourceId;
 
     public ListAdapterView(Context context, int textViewResourceId, ArrayList<Note> notes)
@@ -35,29 +38,31 @@ public class ListAdapterView extends ArrayAdapter<Note>
 
     public View getView(int position, View convertView, ViewGroup parents)
     {
+        // Inflate the view mViewResourceId
         convertView = inflater.inflate(mViewResourceId, null);
 
+        // get the note at the index position
         Note note = notes.get(position);
 
+        // If the note is not empty
         if(note != null)
         {
-            //TextView noteID = (TextView) convertView.findViewById(R.id.noteID);
+            // Initialize the text view to display the information
             TextView noteTitle = (TextView) convertView.findViewById(R.id.noteTitle);
             TextView noteDate = (TextView) convertView.findViewById(R.id.noteDate);
 
 
-//            if(noteID != null)
-//            {
-//                noteID.setText(note.getNoteID());
-//            }
-
+            // If the title of the note is not empty
             if (noteTitle != null)
             {
+                // Set the text view text to the note title
                 noteTitle.setText(note.getNoteTitle());
             }
 
+            // If the date of the note is not empty
             if(noteDate != null)
             {
+                // set the text view text to the note date
                 noteDate.setText(note.getNoteDate());
             }
 
