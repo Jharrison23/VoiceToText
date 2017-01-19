@@ -54,7 +54,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(HomePage.this, "Click", Toast.LENGTH_SHORT).show();
                 // Go to the New note activity
                 Intent intent = new Intent(HomePage.this, NewNote.class);
                 startActivity(intent);
@@ -100,27 +99,36 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
             // set the adapter for the list view to the custom ListAdapterView
             notesList.setAdapter(adapter);
 
-
+            // When an item on the list view is clicked
             notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                    // Create a new note from the arraylist, at index position
                     Note note = notesArrayList.get(position);
 
+                    // Create an intent to move to the class NoteView
                     Intent intent = new Intent(HomePage.this, NoteView.class);
 
+                    // Create a bundle, which allows us to bundle our information together to pass to another class
                     Bundle bundle = new Bundle();
 
+                    // Add a string to the bundle, "ID" is a tag to identify what we passed but note.getNoteID is what we are passing
                     bundle.putString("ID", note.getNoteID());
 
+                    // Add the note title to the bundle
                     bundle.putString("NoteName", note.getNoteTitle());
 
+                    // Add the note date to the bundle
                     bundle.putString("NoteDate", note.getNoteDate());
 
+                    // Add the note content to the bundle
                     bundle.putString("NoteContent", note.getNoteContent());
 
+                    // put the bundle in the intent
                     intent.putExtras(bundle);
 
+                    // Start the activity and move to the next class
                     startActivity(intent);
                 }
             });
@@ -141,7 +149,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener
             // If the add new button is clicked
             case R.id.addNewNote:
 
-                Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show();
                 // Go to the New note activity
                 Intent intent = new Intent(HomePage.this, NewNote.class);
                 startActivity(intent);
