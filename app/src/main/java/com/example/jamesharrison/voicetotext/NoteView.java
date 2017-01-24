@@ -24,11 +24,11 @@ public class NoteView extends AppCompatActivity
     // Strings to store note information
     String StringName, StringDate, StringContent, NoteID;
 
-    // Button to be linked to the delete button on the view
-    Button deleteButton;
+    // Button to be linked to the buttons on layout
+    Button deleteButton, editButton, saveButton;
 
     // Edit Text view which will display the data
-    TextView noteName, noteDate, noteContent;
+    EditText noteName, noteDate, noteContent;
 
     // When the view is created
     @Override
@@ -86,22 +86,25 @@ public class NoteView extends AppCompatActivity
         String content = getNoteContent();
 
         // Text view to display note name
-        noteName = (TextView) findViewById(R.id.noteName);
+        noteName = (EditText) findViewById(R.id.noteName);
 
         // set the text of the note name text view to the contents of variable name
         noteName.setText(name);
 
+
         // Text view to display note date
-        noteDate = (TextView) findViewById(R.id.noteDate);
+        noteDate = (EditText) findViewById(R.id.noteDate);
 
         // set the text of the note date text view to the contents of variable date
         noteDate.setText(date);
 
+
         // Text view to display note content
-        noteContent = (TextView) findViewById(R.id.noteContent);
+        noteContent = (EditText) findViewById(R.id.noteContent);
 
         // set the text of the note content text view to the contents of variable content
         noteContent.setText(content);
+
 
         // Link the delete button
         deleteButton = (Button) findViewById(R.id.deleteNote);
@@ -136,6 +139,60 @@ public class NoteView extends AppCompatActivity
                 }
             }
         });
+
+        editButton = (Button) findViewById(R.id.editButton);
+        editButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                saveButton.setVisibility(View.VISIBLE);
+                saveButton.setClickable(true);
+
+                editButton.setVisibility(View.INVISIBLE);
+                editButton.setClickable(false);
+
+                noteContent.setFocusableInTouchMode(true);
+                noteDate.setFocusableInTouchMode(true);
+                noteName.setFocusableInTouchMode(true);
+
+            }
+        });
+
+        saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setVisibility(View.INVISIBLE);
+        saveButton.setClickable(false);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                saveButton.setVisibility(View.INVISIBLE);
+                saveButton.setClickable(false);
+
+                editButton.setVisibility(View.VISIBLE);
+                editButton.setClickable(true);
+
+                noteContent.setFocusable(false);
+                noteDate.setFocusable(false);
+                noteName.setFocusable(false);
+
+                boolean updated = db.updateNote(getNoteID(), noteName.getText().toString(), noteDate.getText().toString(), noteContent.getText().toString());
+
+                if (updated)
+                {
+                    Toast.makeText(NoteView.this, "Note updated", Toast.LENGTH_SHORT).show();
+                }
+
+                Intent intent = new Intent(NoteView.this, HomePage.class);
+                startActivity(intent);
+            }
+        });
+
+        noteContent.setFocusable(false);
+        noteDate.setFocusable(false);
+        noteName.setFocusable(false);
+
+
 
 
     }

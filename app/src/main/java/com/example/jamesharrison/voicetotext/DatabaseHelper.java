@@ -99,6 +99,20 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
     }
 
+    public boolean updateNote(String id, String noteName, String noteDate, String noteContent)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(COL2, noteName);
+        values.put(COL3, noteDate);
+        values.put(COL4, noteContent);
+
+        return db.update(TABLE_NAME, values, "ID = ?", new String[] {id}) > 0;
+    }
+
+
 
     // Method which returns a cursor to get the contents from the table in the database
     public Cursor getListContents()
