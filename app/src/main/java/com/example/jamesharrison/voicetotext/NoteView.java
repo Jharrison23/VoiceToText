@@ -91,20 +91,17 @@ public class NoteView extends AppCompatActivity
         // set the text of the note name text view to the contents of variable name
         noteName.setText(name);
 
-
         // Text view to display note date
         noteDate = (EditText) findViewById(R.id.noteDate);
 
         // set the text of the note date text view to the contents of variable date
         noteDate.setText(date);
 
-
         // Text view to display note content
         noteContent = (EditText) findViewById(R.id.noteContent);
 
         // set the text of the note content text view to the contents of variable content
         noteContent.setText(content);
-
 
         // Link the delete button
         deleteButton = (Button) findViewById(R.id.deleteNote);
@@ -140,18 +137,22 @@ public class NoteView extends AppCompatActivity
             }
         });
 
+        // Once the edit button is clicked
         editButton = (Button) findViewById(R.id.editButton);
         editButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                // Make the save button clickable and visibile
                 saveButton.setVisibility(View.VISIBLE);
                 saveButton.setClickable(true);
 
+                // Make the edit button invisible and not clickable
                 editButton.setVisibility(View.INVISIBLE);
                 editButton.setClickable(false);
 
+                // Make the edit text editable
                 noteContent.setFocusableInTouchMode(true);
                 noteDate.setFocusableInTouchMode(true);
                 noteName.setFocusableInTouchMode(true);
@@ -159,40 +160,48 @@ public class NoteView extends AppCompatActivity
             }
         });
 
+        // once the save button is clicked
         saveButton = (Button) findViewById(R.id.saveButton);
+
+        // Make the save button not visible or clickable
         saveButton.setVisibility(View.INVISIBLE);
         saveButton.setClickable(false);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
+                // Make the save button not clickable or visible
                 saveButton.setVisibility(View.INVISIBLE);
                 saveButton.setClickable(false);
 
+                // Make the edit button clickable and visible
                 editButton.setVisibility(View.VISIBLE);
                 editButton.setClickable(true);
 
+                // Make the edit text not editable
                 noteContent.setFocusable(false);
                 noteDate.setFocusable(false);
                 noteName.setFocusable(false);
 
+                // Once the save button is pressed pass the new information into the update method in the database to be updated
                 boolean updated = db.updateNote(getNoteID(), noteName.getText().toString(), noteDate.getText().toString(), noteContent.getText().toString());
 
+                // If the update is successful
                 if (updated)
                 {
                     Toast.makeText(NoteView.this, "Note updated", Toast.LENGTH_SHORT).show();
                 }
 
+                // go back to the homepage
                 Intent intent = new Intent(NoteView.this, HomePage.class);
                 startActivity(intent);
             }
         });
 
+        // Make the edit text not editable
         noteContent.setFocusable(false);
         noteDate.setFocusable(false);
         noteName.setFocusable(false);
-
-
 
 
     }

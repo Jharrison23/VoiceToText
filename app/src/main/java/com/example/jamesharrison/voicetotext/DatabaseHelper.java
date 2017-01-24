@@ -99,16 +99,21 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
     }
 
+    // Method which takes in the notes information and updates the database entry
     public boolean updateNote(String id, String noteName, String noteDate, String noteContent)
     {
+        // open a readable and writable database
         SQLiteDatabase db = this.getWritableDatabase();
 
+        // create and empty set of values
         ContentValues values = new ContentValues();
 
+        // put the values in the corresponding column
         values.put(COL2, noteName);
         values.put(COL3, noteDate);
         values.put(COL4, noteContent);
 
+        // update the table entry for the row with this id
         return db.update(TABLE_NAME, values, "ID = ?", new String[] {id}) > 0;
     }
 
